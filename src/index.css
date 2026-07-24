@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --light-gray: #D5D3CC;
+    --phthalo: #19350C;
+    --mustard: #687D31;
+    --deep-space: #406768;
+    --moonstone: #6FA9BB;
+    --light-gray-card: #eceae5;
+    --light-gray-surface: #e2e0db;
+  }
+
+  body {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--light-gray);
+    color: var(--phthalo);
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Custom Futuristic Nebula Display Font Class */
+.font-nebula {
+  font-family: 'Orbitron', 'Chakra Petch', sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.font-display {
+  font-family: 'Orbitron', 'Outfit', sans-serif;
+}
+
+/* Custom Design Utilities */
+.bg-light-gray { background-color: #D5D3CC; }
+.bg-light-gray-surface { background-color: #e2e0db; }
+.bg-phthalo { background-color: #19350C; }
+.bg-mustard { background-color: #687D31; }
+.bg-deep-space { background-color: #406768; }
+.bg-moonstone { background-color: #6FA9BB; }
+
+.text-phthalo { color: #19350C; }
+.text-mustard { color: #687D31; }
+.text-light-gray { color: #D5D3CC; }
+.text-deep-space { color: #406768; }
+.text-moonstone { color: #6FA9BB; }
+
+.border-phthalo { border-color: #19350C; }
+.border-mustard { border-color: #687D31; }
+.border-deep-space { border-color: #406768; }
+.border-moonstone { border-color: #6FA9BB; }
+
+/* Custom Light Theme Glassmorphism Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(64, 103, 104, 0.25);
+  box-shadow: 0 4px 20px rgba(25, 53, 12, 0.04);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(64, 103, 104, 0.6);
+  box-shadow: 0 12px 32px -8px rgba(25, 53, 12, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Glow Effects tailored for Light Theme */
+.glow-phthalo {
+  box-shadow: 0 0 25px rgba(25, 53, 12, 0.25);
+}
+
+.glow-moonstone {
+  box-shadow: 0 0 25px rgba(111, 169, 187, 0.4);
+}
+
+.text-glow-phthalo {
+  text-shadow: 0 0 16px rgba(25, 53, 12, 0.15);
+}
+
+/* Grid overlay background for light theme */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(64, 103, 104, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(64, 103, 104, 0.12) 1px, transparent 1px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #D5D3CC;
+}
+::-webkit-scrollbar-thumb {
+  background: #406768;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #19350C;
+}
