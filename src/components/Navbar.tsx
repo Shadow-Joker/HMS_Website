@@ -39,13 +39,8 @@ export function Navbar() {
           </a>
         </div>
 
-        {/* Live Status Badge & Primary CTA */}
+        {/* Primary CTA */}
         <div className="hidden lg:flex items-center space-x-4">
-          <div className="flex items-center space-x-2 text-[11px] font-nebula text-[#1E2D26] bg-white/80 px-3 py-1.5 rounded-lg border border-[#769382]/30 shadow-sm font-bold">
-            <span className="w-2 h-2 rounded-full bg-[#769382] animate-ping" />
-            <span>AI CORE: 99.98% ACCURACY</span>
-          </div>
-
           <a
             href="#contact"
             className="inline-flex items-center space-x-2 bg-[#1E2D26] hover:bg-[#1E2D26]/90 text-[#F3EFE3] font-nebula font-bold text-xs px-4 py-2.5 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer tracking-wider"
