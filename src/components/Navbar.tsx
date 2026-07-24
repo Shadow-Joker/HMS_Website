@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Activity, ChevronRight, Menu, X, Sparkles, PhoneCall } from 'lucide-react';
+import { Activity, ChevronRight, Menu, X, Sparkles, PhoneCall, Layers } from 'lucide-react';
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -39,7 +39,7 @@ export function Navbar() {
               </span>
             </div>
             <span className="text-[8px] font-nebula text-[#769382] block -mt-1 font-bold tracking-widest uppercase">
-              Hospital OS v2.4
+              Modular HMS v2.4
             </span>
           </div>
         </a>
@@ -47,8 +47,11 @@ export function Navbar() {
         {/* Desktop Nav Links */}
         <div className="hidden md:flex items-center space-x-7 text-xs font-nebula font-bold tracking-wider">
           <a href="#products" className="text-[#1E2D26]/85 hover:text-[#769382] transition-colors flex items-center space-x-1">
-            <span>Products</span>
-            <span className="text-[9px] px-1.5 py-0.2 rounded bg-[#769382]/15 text-[#769382] font-mono">16</span>
+            <span>16 Modules</span>
+          </a>
+          <a href="#modular-builder" className="text-[#1E2D26]/85 hover:text-[#769382] transition-colors flex items-center space-x-1">
+            <Layers className="w-3 h-3 text-[#769382]" />
+            <span>HMS Builder</span>
           </a>
           <a href="#journey" className="text-[#1E2D26]/85 hover:text-[#769382] transition-colors">
             Patient Flow
@@ -56,9 +59,6 @@ export function Navbar() {
           <a href="#spatial-twin" className="text-[#1E2D26]/85 hover:text-[#769382] transition-colors flex items-center space-x-1">
             <Sparkles className="w-3 h-3 text-[#769382]" />
             <span>3D Spatial Twin</span>
-          </a>
-          <a href="#simulator" className="text-[#1E2D26]/85 hover:text-[#769382] transition-colors">
-            Telemetry
           </a>
           <a href="#compliance" className="text-[#1E2D26]/85 hover:text-[#769382] transition-colors">
             Compliance & ABDM
@@ -96,14 +96,22 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileOpen && (
-        <div className="md:hidden max-w-7xl mx-auto mt-2 bg-[#F3EFE3] border border-[#769382]/40 rounded-2xl p-6 shadow-2xl flex flex-col space-y-4 font-nebula text-xs font-bold tracking-wider animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="md:hidden max-w-7xl mx-auto mt-2 bg-[#F3EFE3] border border-[#769382]/40 rounded-2xl p-6 shadow-2xl flex flex-col space-y-4 font-nebula text-xs font-bold tracking-wider">
           <a
             onClick={() => setMobileOpen(false)}
             href="#products"
             className="text-[#1E2D26] py-2 border-b border-[#769382]/20 flex justify-between items-center"
           >
-            <span>16 Products</span>
-            <span className="text-[10px] px-2 py-0.5 rounded bg-[#769382]/20 text-[#1E2D26]">All Modules</span>
+            <span>16 HMS Modules</span>
+            <span className="text-[10px] px-2 py-0.5 rounded bg-[#769382]/20 text-[#1E2D26]">Pick & Choose</span>
+          </a>
+          <a
+            onClick={() => setMobileOpen(false)}
+            href="#modular-builder"
+            className="text-[#1E2D26] py-2 border-b border-[#769382]/20 flex items-center space-x-2"
+          >
+            <Layers className="w-4 h-4 text-[#769382]" />
+            <span>Modular Package Configurator</span>
           </a>
           <a
             onClick={() => setMobileOpen(false)}
@@ -119,13 +127,6 @@ export function Navbar() {
           >
             <Sparkles className="w-4 h-4 text-[#769382]" />
             <span>3D Spatial Digital Twin</span>
-          </a>
-          <a
-            onClick={() => setMobileOpen(false)}
-            href="#simulator"
-            className="text-[#1E2D26] py-2 border-b border-[#769382]/20"
-          >
-            Live Telemetry Simulator
           </a>
           <a
             onClick={() => setMobileOpen(false)}
