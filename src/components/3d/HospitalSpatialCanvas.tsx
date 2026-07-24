@@ -2,6 +2,7 @@ import React, { useRef, useMemo, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Sphere, MeshWobbleMaterial, Float, Line, Ring } from '@react-three/drei';
 import * as THREE from 'three';
+import { X, Zap, Activity } from 'lucide-react';
 
 // Node Data structure for Hospital Departments
 export interface HospitalNode {
@@ -10,7 +11,7 @@ export interface HospitalNode {
   code: string;
   position: [number, number, number];
   color: string;
-  load: number; // 0-100% capacity load
+  load: number;
   patients: number;
   doctors: number;
   priority: 'NORMAL' | 'ELEVATED' | 'CRITICAL';
@@ -125,7 +126,7 @@ function CentralCore({ activeMode, pulsing }: { activeMode: string; pulsing: boo
       {/* Rotating Outer Gyro Ring */}
       <mesh ref={ringRef} position={[0, 0, 0]}>
         <torusGeometry args={[1.6, 0.02, 16, 64]} />
-        <meshBasicMaterial color="#769382" transparent opacity={0.6} />
+        <meshBasicMaterial color="#769382" transparent opacity={0.5} />
       </mesh>
 
       {/* Inner Glowing Nucleus */}
@@ -157,7 +158,7 @@ function DataPacket({ start, end, speed = 1 }: { start: [number, number, number]
 
   return (
     <mesh ref={packetRef}>
-      <sphereGeometry args={[0.06, 16, 16]} />
+      <sphereGeometry args={[0.05, 16, 16]} />
       <meshBasicMaterial color="#769382" />
     </mesh>
   );
@@ -175,21 +176,19 @@ function GroundRadar() {
 
   return (
     <group position={[0, -2.8, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-      {/* Radar Grid Rings */}
       <Ring args={[1.5, 1.52, 64]} position={[0, 0, 0]}>
-        <meshBasicMaterial color="#769382" transparent opacity={0.3} side={THREE.DoubleSide} />
+        <meshBasicMaterial color="#769382" transparent opacity={0.25} side={THREE.DoubleSide} />
       </Ring>
       <Ring args={[3.0, 3.02, 64]} position={[0, 0, 0]}>
-        <meshBasicMaterial color="#769382" transparent opacity={0.2} side={THREE.DoubleSide} />
+        <meshBasicMaterial color="#769382" transparent opacity={0.18} side={THREE.DoubleSide} />
       </Ring>
       <Ring args={[4.5, 4.52, 64]} position={[0, 0, 0]}>
         <meshBasicMaterial color="#769382" transparent opacity={0.1} side={THREE.DoubleSide} />
       </Ring>
       
-      {/* Rotating Sweep Line */}
       <mesh ref={radarRef}>
-        <planeGeometry args={[9, 0.04]} />
-        <meshBasicMaterial color="#769382" transparent opacity={0.4} side={THREE.DoubleSide} />
+        <planeGeometry args={[9, 0.03]} />
+        <meshBasicMaterial color="#769382" transparent opacity={0.35} side={THREE.DoubleSide} />
       </mesh>
     </group>
   );
@@ -223,7 +222,7 @@ function HospitalNodePoint({ node, isSelected, onSelect }: { node: HospitalNode;
         />
       </mesh>
 
-      {/* Connection Beam to Core */}
+      {/* Connection Line */}
       <Line
         points={[[0, 0, 0], [-node.position[0], -node.position[1], -node.position[2]]]}
         color={isSelected ? '#1E2D26' : node.color}
@@ -232,9 +231,7 @@ function HospitalNodePoint({ node, isSelected, onSelect }: { node: HospitalNode;
         opacity={hovered || isSelected ? 0.95 : 0.45}
       />
 
-      {/* Active Data Packet Stream */}
       <DataPacket start={[0, 0, 0]} end={[-node.position[0], -node.position[1], -node.position[2]]} speed={0.8} />
-      <DataPacket start={[-node.position[0], -node.position[1], -node.position[2]]} end={[0, 0, 0]} speed={0.5} />
     </group>
   );
 }
@@ -269,10 +266,10 @@ function ParticleNetwork() {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.045}
+        size={0.04}
         color="#769382"
         transparent
-        opacity={0.5}
+        opacity={0.4}
         sizeAttenuation
       />
     </points>
@@ -280,7 +277,7 @@ function ParticleNetwork() {
 }
 
 export function HospitalSpatialCanvas({ mode = 'neural' }: { mode?: 'neural' | 'icu' | 'ot' }) {
-  const [selectedNode, setSelectedNode] = useState<HospitalNode>(HOSPITAL_NODES[0]);
+  const [selectedNode, setSelectedNode] = useState<HospitalNode | null>(null);
   const [autoRotate, setAutoRotate] = useState<boolean>(true);
   const [pulsing, setPulsing] = useState<boolean>(false);
   const [hasError, setHasError] = useState(false);
@@ -303,46 +300,84 @@ export function HospitalSpatialCanvas({ mode = 'neural' }: { mode?: 'neural' | '
   }
 
   return (
-    <div className="relative w-full h-full min-h-[460px] lg:min-h-[520px] rounded-2xl overflow-hidden bg-white/90 border border-[#769382]/35 shadow-2xl backdrop-blur-md">
+    <div className="relative w-full h-full min-h-[480px] lg:min-h-[520px] rounded-3xl overflow-hidden bg-gradient-to-b from-white/90 via-[#F3EFE3]/80 to-[#EBE3D3]/60 border border-[#769382]/30 shadow-xl backdrop-blur-md flex flex-col justify-between p-4">
       
-      {/* Header Overlay Controls */}
-      <div className="absolute top-4 left-4 right-4 z-10 flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center space-x-3 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#769382]/30 shadow-sm">
-          <span className={`w-2.5 h-2.5 rounded-full ${pulsing ? 'bg-red-500 animate-ping' : 'bg-[#769382] animate-pulse'}`} />
-          <span className="text-xs font-nebula text-[#1E2D26] tracking-wider">
-            TANTRIKS 3D RADAR :: <span className="text-[#769382] font-bold uppercase">{mode} MODE</span>
+      {/* 1. Header Bar Overlay: Clean & Non-overlapping */}
+      <div className="relative z-10 flex items-center justify-between gap-2 pointer-events-auto">
+        <div className="flex items-center space-x-2 bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#769382]/30 shadow-sm">
+          <span className={`w-2 h-2 rounded-full ${pulsing ? 'bg-red-500 animate-ping' : 'bg-[#769382] animate-pulse'}`} />
+          <span className="text-[11px] font-nebula text-[#1E2D26] tracking-wider">
+            3D SPATIAL CANVAS :: <span className="text-[#769382] font-bold uppercase">{mode}</span>
           </span>
         </div>
 
-        {/* Quick Action Buttons */}
+        {/* Minimal Actions */}
         <div className="flex items-center space-x-2">
           <button
             onClick={handlePulseSignal}
-            className="px-3 py-1.5 rounded-xl bg-[#1E2D26] hover:bg-[#1E2D26]/90 text-[#F3EFE3] font-nebula text-[10px] font-bold tracking-wider shadow cursor-pointer transition-all active:scale-95 flex items-center space-x-1.5"
+            className="px-3 py-1.5 rounded-xl bg-[#1E2D26] hover:bg-[#1E2D26]/90 text-[#F3EFE3] font-nebula text-[10px] font-bold tracking-wider shadow cursor-pointer transition-all active:scale-95 flex items-center space-x-1"
           >
-            <span>⚡ Trigger AI Pulse</span>
+            <Zap className="w-3 h-3 text-[#769382]" />
+            <span>PULSE AI</span>
           </button>
           <button
             onClick={() => setAutoRotate(!autoRotate)}
             className={`px-3 py-1.5 rounded-xl font-nebula text-[10px] font-bold tracking-wider border transition-all cursor-pointer ${
               autoRotate
                 ? 'bg-[#769382]/15 text-[#1E2D26] border-[#769382]/40'
-                : 'bg-white text-[#1E2D26]/60 border-[#769382]/30'
+                : 'bg-white/80 text-[#1E2D26]/60 border-[#769382]/30'
             }`}
           >
-            {autoRotate ? 'Orbit: ON' : 'Orbit: OFF'}
+            {autoRotate ? 'ROTATE: ON' : 'ROTATE: OFF'}
           </button>
         </div>
       </div>
 
-      {/* Selected Node Detailed Telemetry Drawer Overlay */}
+      {/* 2. 3D R3F Canvas - Takes full space */}
+      <div className="absolute inset-0 z-0">
+        <Canvas
+          camera={{ position: [0, 0, 5.5], fov: 50 }}
+          onError={() => setHasError(true)}
+          className="w-full h-full cursor-grab active:cursor-grabbing"
+        >
+          <ambientLight intensity={0.9} />
+          <pointLight position={[10, 10, 10]} intensity={1.2} color="#769382" />
+          <pointLight position={[-10, -10, -10]} intensity={0.9} color="#1E2D26" />
+
+          <CentralCore activeMode={mode} pulsing={pulsing} />
+
+          {HOSPITAL_NODES.map((node) => (
+            <HospitalNodePoint
+              key={node.id}
+              node={node}
+              isSelected={selectedNode?.id === node.id}
+              onSelect={setSelectedNode}
+            />
+          ))}
+
+          <GroundRadar />
+          <ParticleNetwork />
+
+          <OrbitControls
+            autoRotate={autoRotate}
+            autoRotateSpeed={0.8}
+            enableZoom={true}
+            maxDistance={8}
+            minDistance={3}
+            enablePan={false}
+            rotateSpeed={0.6}
+          />
+        </Canvas>
+      </div>
+
+      {/* 3. Selected Node Floating Card Drawer (Sleek, bottom-left, with close button, zero overlap) */}
       {selectedNode && (
-        <div className="absolute bottom-4 left-4 z-10 bg-white/95 backdrop-blur-md p-5 rounded-2xl border border-[#769382]/35 shadow-xl max-w-sm transition-all duration-300">
-          <div className="flex justify-between items-start mb-2">
+        <div className="relative z-20 self-start mt-auto bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-[#769382]/40 shadow-2xl max-w-xs transition-all pointer-events-auto">
+          <div className="flex justify-between items-start mb-1.5">
             <div>
               <div className="flex items-center space-x-2">
                 <span className="text-[10px] font-nebula uppercase tracking-widest text-[#769382] font-bold">{selectedNode.code}</span>
-                <span className={`px-2 py-0.5 rounded-full text-[9px] font-nebula font-bold ${
+                <span className={`px-2 py-0.5 rounded-full text-[8px] font-nebula font-bold ${
                   selectedNode.priority === 'CRITICAL'
                     ? 'bg-red-500/15 text-red-600 border border-red-500/30'
                     : selectedNode.priority === 'ELEVATED'
@@ -352,25 +387,28 @@ export function HospitalSpatialCanvas({ mode = 'neural' }: { mode?: 'neural' | '
                   {selectedNode.priority}
                 </span>
               </div>
-              <h4 className="text-base font-bold text-[#1E2D26] font-nebula tracking-wide">{selectedNode.name}</h4>
+              <h4 className="text-sm font-bold text-[#1E2D26] font-nebula tracking-wide">{selectedNode.name}</h4>
             </div>
-            <div className="text-right">
-              <span className="text-xs font-mono font-bold text-[#1E2D26]">{selectedNode.load}% LOAD</span>
-            </div>
+            <button
+              onClick={() => setSelectedNode(null)}
+              className="p-1 rounded-full text-[#1E2D26]/60 hover:text-[#1E2D26] hover:bg-[#769382]/20 cursor-pointer"
+            >
+              <X className="w-4 h-4" />
+            </button>
           </div>
 
-          <p className="text-xs text-[#1E2D26]/80 mb-3 leading-relaxed">
+          <p className="text-[11px] text-[#1E2D26]/80 mb-2 leading-relaxed">
             {selectedNode.description}
           </p>
 
-          <div className="grid grid-cols-2 gap-2 text-xs font-mono mb-3 bg-[#F3EFE3] p-2.5 rounded-xl border border-[#769382]/20">
+          <div className="grid grid-cols-2 gap-2 text-[11px] font-mono mb-2 bg-[#F3EFE3] p-2 rounded-lg border border-[#769382]/20">
             <div>
-              <span className="text-[#1E2D26]/60 text-[10px] block font-sans">Active Patients</span>
-              <span className="font-bold text-[#1E2D26]">{selectedNode.patients} Admissions</span>
+              <span className="text-[#1E2D26]/60 text-[9px] block font-sans">Patients</span>
+              <span className="font-bold text-[#1E2D26]">{selectedNode.patients} Active</span>
             </div>
             <div>
-              <span className="text-[#1E2D26]/60 text-[10px] block font-sans">On-Call Staff</span>
-              <span className="font-bold text-[#769382]">{selectedNode.doctors} Physicians</span>
+              <span className="text-[#1E2D26]/60 text-[9px] block font-sans">Staff</span>
+              <span className="font-bold text-[#769382]">{selectedNode.doctors} On-Call</span>
             </div>
           </div>
 
@@ -385,67 +423,32 @@ export function HospitalSpatialCanvas({ mode = 'neural' }: { mode?: 'neural' | '
         </div>
       )}
 
-      {/* Node Selector Quick Nav Tabs Overlay */}
-      <div className="absolute top-16 right-4 z-10 hidden md:flex flex-col space-y-1 bg-white/90 backdrop-blur-md p-1.5 rounded-xl border border-[#769382]/30 shadow-md">
-        <span className="text-[9px] font-nebula text-[#1E2D26]/60 px-2 py-0.5 block font-bold tracking-widest">
-          SELECT NODE:
+      {/* 4. Bottom Horizontal Node Bar & Clean Minimal Guide */}
+      <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-2 pt-2 border-t border-[#769382]/20 pointer-events-auto mt-auto">
+        
+        {/* Sleek Horizontal Node Pill Strip */}
+        <div className="flex items-center space-x-1 overflow-x-auto max-w-full pb-1 sm:pb-0 scrollbar-none font-nebula text-[9px]">
+          {HOSPITAL_NODES.map((node) => (
+            <button
+              key={node.id}
+              onClick={() => setSelectedNode(node)}
+              className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer whitespace-nowrap ${
+                selectedNode?.id === node.id
+                  ? 'bg-[#1E2D26] text-[#F3EFE3] font-bold shadow-sm'
+                  : 'bg-white/80 text-[#1E2D26]/70 hover:bg-[#769382]/20'
+              }`}
+            >
+              {node.code}
+            </button>
+          ))}
+        </div>
+
+        {/* Minimal Unobtrusive Guidance Text */}
+        <span className="text-[9px] font-nebula text-[#1E2D26]/60 tracking-widest whitespace-nowrap">
+          🖱️ CLICK NODE · DRAG TO ROTATE
         </span>
-        {HOSPITAL_NODES.map((node) => (
-          <button
-            key={node.id}
-            onClick={() => setSelectedNode(node)}
-            className={`px-3 py-1 rounded-lg text-[10px] font-nebula text-left transition-all cursor-pointer ${
-              selectedNode.id === node.id
-                ? 'bg-[#1E2D26] text-[#F3EFE3] font-bold shadow'
-                : 'text-[#1E2D26]/70 hover:bg-[#769382]/15'
-            }`}
-          >
-            {node.code} · {node.name}
-          </button>
-        ))}
       </div>
 
-      {/* Interactive Controls Guide */}
-      <div className="absolute bottom-4 right-4 z-10 hidden sm:flex items-center space-x-2 text-[10px] font-nebula text-[#1E2D26]/70 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-lg border border-[#769382]/30 shadow-sm tracking-wider">
-        <span>🖱️ Click node to inspect</span>
-        <span>•</span>
-        <span>Drag to rotate</span>
-      </div>
-
-      {/* 3D R3F Canvas */}
-      <Canvas
-        camera={{ position: [0, 0, 5.5], fov: 50 }}
-        onError={() => setHasError(true)}
-        className="w-full h-full cursor-grab active:cursor-grabbing bg-gradient-to-b from-white/80 to-[#EBE3D3]/70"
-      >
-        <ambientLight intensity={0.9} />
-        <pointLight position={[10, 10, 10]} intensity={1.2} color="#769382" />
-        <pointLight position={[-10, -10, -10]} intensity={0.9} color="#1E2D26" />
-
-        <CentralCore activeMode={mode} pulsing={pulsing} />
-
-        {HOSPITAL_NODES.map((node) => (
-          <HospitalNodePoint
-            key={node.id}
-            node={node}
-            isSelected={selectedNode.id === node.id}
-            onSelect={setSelectedNode}
-          />
-        ))}
-
-        <GroundRadar />
-        <ParticleNetwork />
-
-        <OrbitControls
-          autoRotate={autoRotate}
-          autoRotateSpeed={0.8}
-          enableZoom={true}
-          maxDistance={8}
-          minDistance={3}
-          enablePan={false}
-          rotateSpeed={0.6}
-        />
-      </Canvas>
     </div>
   );
 }

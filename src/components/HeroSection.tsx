@@ -71,40 +71,40 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column: Interactive 3D Spatial Canvas */}
-          <div className="lg:col-span-6 space-y-3">
-            {/* 3D Mode Selector Buttons */}
-            <div className="flex items-center justify-between bg-white/80 backdrop-blur-md p-1.5 rounded-xl border border-[#769382]/30 shadow-sm">
-              <span className="text-[11px] font-nebula text-[#1E2D26]/70 px-3 hidden sm:inline font-bold tracking-wider">
-                3D Viewport:
+          {/* Right Column: Clean 3D Spatial Canvas Container */}
+          <div className="lg:col-span-6 space-y-4">
+            {/* Clean Viewport Mode Bar */}
+            <div className="flex items-center justify-between bg-white/90 backdrop-blur-md px-4 py-2 rounded-2xl border border-[#769382]/30 shadow-sm">
+              <span className="text-[11px] font-nebula text-[#1E2D26] font-bold tracking-wider">
+                VIEWPORT MODE:
               </span>
-              <div className="flex space-x-1 w-full sm:w-auto font-nebula text-[10px]">
+              <div className="flex space-x-1.5 font-nebula text-[10px]">
                 <button
                   onClick={() => setActive3DMode('neural')}
-                  className={`flex-1 sm:flex-none px-3 py-1.5 rounded-lg transition-all cursor-pointer tracking-wider ${
+                  className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer tracking-wider ${
                     active3DMode === 'neural'
                       ? 'bg-[#1E2D26] text-[#F3EFE3] font-bold shadow'
-                      : 'text-[#1E2D26]/70 hover:text-[#1E2D26]'
+                      : 'bg-[#F3EFE3]/80 text-[#1E2D26]/70 hover:bg-[#769382]/15'
                   }`}
                 >
-                  Neural Node
+                  Neural Core
                 </button>
                 <button
                   onClick={() => setActive3DMode('icu')}
-                  className={`flex-1 sm:flex-none px-3 py-1.5 rounded-lg transition-all cursor-pointer tracking-wider ${
+                  className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer tracking-wider ${
                     active3DMode === 'icu'
                       ? 'bg-[#769382] text-white font-bold shadow'
-                      : 'text-[#1E2D26]/70 hover:text-[#1E2D26]'
+                      : 'bg-[#F3EFE3]/80 text-[#1E2D26]/70 hover:bg-[#769382]/15'
                   }`}
                 >
                   ICU Grid
                 </button>
                 <button
                   onClick={() => setActive3DMode('ot')}
-                  className={`flex-1 sm:flex-none px-3 py-1.5 rounded-lg transition-all cursor-pointer tracking-wider ${
+                  className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer tracking-wider ${
                     active3DMode === 'ot'
                       ? 'bg-[#4E6B5A] text-white font-bold shadow'
-                      : 'text-[#1E2D26]/70 hover:text-[#1E2D26]'
+                      : 'bg-[#F3EFE3]/80 text-[#1E2D26]/70 hover:bg-[#769382]/15'
                   }`}
                 >
                   OT Surge
@@ -113,7 +113,7 @@ export function HeroSection() {
             </div>
 
             {/* R3F 3D Viewport Container */}
-            <div className="h-[440px] sm:h-[480px] w-full">
+            <div className="h-[480px] sm:h-[520px] w-full">
               <HospitalSpatialCanvas mode={active3DMode} />
             </div>
           </div>
