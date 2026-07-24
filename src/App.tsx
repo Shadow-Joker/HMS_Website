@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { ProductsSection } from './components/ProductsSection';
+import { SpatialTwinSection } from './components/SpatialTwinSection';
 import { LiveSimulator } from './components/LiveSimulator';
 import { ModuleBento } from './components/ModuleBento';
 import { PatientJourneySection } from './components/PatientJourneySection';
@@ -17,6 +18,7 @@ export function App() {
       <main>
         <HeroSection />
         <ProductsSection />
+        <SpatialTwinSection />
         <LiveSimulator />
         <ModuleBento />
         <PatientJourneySection />
