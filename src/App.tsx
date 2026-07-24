@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { LiveSimulator } from './components/LiveSimulator';
 import { ModuleBento } from './components/ModuleBento';
+import { PatientJourneySection } from './components/PatientJourneySection';
 import { Architecture3DSpec } from './components/Architecture3DSpec';
 import { TrustWall } from './components/TrustWall';
 import { ContactSection } from './components/ContactSection';
@@ -10,12 +11,13 @@ import { Footer } from './components/Footer';
 
 export function App() {
   return (
-    <div className="min-h-[100dvh] bg-[#19350C] text-[#D5D3CC] selection:bg-[#6FA9BB] selection:text-[#19350C]">
+    <div className="min-h-[100dvh] bg-[#F3EFE3] text-[#1E2D26] selection:bg-[#769382] selection:text-[#F3EFE3]">
       <Navbar />
       <main>
         <HeroSection />
         <LiveSimulator />
         <ModuleBento />
+        <PatientJourneySection />
         <Architecture3DSpec />
         <TrustWall />
         <ContactSection />
