@@ -25,8 +25,11 @@ export function Navbar() {
 
         {/* Desktop Nav Links */}
         <div className="hidden md:flex items-center space-x-8 text-xs font-nebula font-bold tracking-wider">
-          <a href="#platform" className="text-[#1E2D26]/85 hover:text-[#769382] transition-colors">
-            AI Platform
+          <a href="#products" className="text-[#1E2D26]/85 hover:text-[#769382] transition-colors">
+            16 Products
+          </a>
+          <a href="#journey" className="text-[#1E2D26]/85 hover:text-[#769382] transition-colors">
+            Patient Flow
           </a>
           <a href="#simulator" className="text-[#1E2D26]/85 hover:text-[#769382] transition-colors">
             Live Telemetry
@@ -35,7 +38,7 @@ export function Navbar() {
             3D Spatial OS
           </a>
           <a href="#compliance" className="text-[#1E2D26]/85 hover:text-[#769382] transition-colors">
-            HIPAA & Security
+            Compliance & ABDM
           </a>
         </div>
 
@@ -65,10 +68,17 @@ export function Navbar() {
         <div className="md:hidden max-w-7xl mx-auto mt-2 bg-[#F3EFE3] border border-[#769382]/40 rounded-2xl p-6 shadow-2xl flex flex-col space-y-4 font-nebula text-xs font-bold tracking-wider">
           <a
             onClick={() => setMobileOpen(false)}
-            href="#platform"
+            href="#products"
             className="text-[#1E2D26] py-2 border-b border-[#769382]/20"
           >
-            AI Platform
+            16 Products
+          </a>
+          <a
+            onClick={() => setMobileOpen(false)}
+            href="#journey"
+            className="text-[#1E2D26] py-2 border-b border-[#769382]/20"
+          >
+            Patient Flow
           </a>
           <a
             onClick={() => setMobileOpen(false)}
@@ -89,7 +99,7 @@ export function Navbar() {
             href="#compliance"
             className="text-[#1E2D26] py-2 border-b border-[#769382]/20"
           >
-            HIPAA & Security
+            Compliance & ABDM
           </a>
           <a
             onClick={() => setMobileOpen(false)}
