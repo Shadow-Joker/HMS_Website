@@ -2,19 +2,17 @@
 
 @layer base {
   :root {
-    --light-gray: #D5D3CC;
-    --phthalo: #19350C;
-    --mustard: #687D31;
-    --deep-space: #406768;
-    --moonstone: #6FA9BB;
-    --light-gray-card: #eceae5;
-    --light-gray-surface: #e2e0db;
+    --canvas-bg: #F3EFE3;
+    --sage-green: #769382;
+    --sage-dark: #1E2D26;
+    --warm-cream: #EBE3D3;
+    --sage-gray: #C0C3B9;
   }
 
   body {
     font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
-    background-color: var(--light-gray);
-    color: var(--phthalo);
+    background-color: var(--canvas-bg);
+    color: var(--sage-dark);
   }
 
   code, pre, .font-mono {
@@ -33,32 +31,31 @@
   font-family: 'Orbitron', 'Outfit', sans-serif;
 }
 
-/* Custom Design Utilities */
-.bg-light-gray { background-color: #D5D3CC; }
-.bg-light-gray-surface { background-color: #e2e0db; }
-.bg-phthalo { background-color: #19350C; }
-.bg-mustard { background-color: #687D31; }
-.bg-deep-space { background-color: #406768; }
-.bg-moonstone { background-color: #6FA9BB; }
+/* New Healthcare Color Palette Utilities */
+.bg-canvas { background-color: #F3EFE3; }
+.bg-sage { background-color: #769382; }
+.bg-sage-dark { background-color: #1E2D26; }
+.bg-warm-cream { background-color: #EBE3D3; }
+.bg-sage-gray { background-color: #C0C3B9; }
 
-.text-phthalo { color: #19350C; }
-.text-mustard { color: #687D31; }
-.text-light-gray { color: #D5D3CC; }
-.text-deep-space { color: #406768; }
-.text-moonstone { color: #6FA9BB; }
+.text-canvas { color: #F3EFE3; }
+.text-sage { color: #769382; }
+.text-sage-dark { color: #1E2D26; }
+.text-warm-cream { color: #EBE3D3; }
+.text-sage-gray { color: #C0C3B9; }
 
-.border-phthalo { border-color: #19350C; }
-.border-mustard { border-color: #687D31; }
-.border-deep-space { border-color: #406768; }
-.border-moonstone { border-color: #6FA9BB; }
+.border-sage { border-color: #769382; }
+.border-sage-dark { border-color: #1E2D26; }
+.border-warm-cream { border-color: #EBE3D3; }
+.border-sage-gray { border-color: #C0C3B9; }
 
 /* Custom Light Theme Glassmorphism Cards */
 .glass-card {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(64, 103, 104, 0.25);
-  box-shadow: 0 4px 20px rgba(25, 53, 12, 0.04);
+  border: 1px solid rgba(118, 147, 130, 0.3);
+  box-shadow: 0 4px 20px rgba(30, 45, 38, 0.04);
 }
 
 .glass-card-hover {
@@ -66,30 +63,30 @@
 }
 
 .glass-card-hover:hover {
-  border-color: rgba(64, 103, 104, 0.6);
-  box-shadow: 0 12px 32px -8px rgba(25, 53, 12, 0.12);
+  border-color: rgba(118, 147, 130, 0.6);
+  box-shadow: 0 12px 32px -8px rgba(30, 45, 38, 0.12);
   transform: translateY(-2px);
 }
 
-/* Glow Effects tailored for Light Theme */
-.glow-phthalo {
-  box-shadow: 0 0 25px rgba(25, 53, 12, 0.25);
+/* Glow Effects */
+.glow-sage {
+  box-shadow: 0 0 25px rgba(118, 147, 130, 0.35);
 }
 
-.glow-moonstone {
-  box-shadow: 0 0 25px rgba(111, 169, 187, 0.4);
+.glow-sage-dark {
+  box-shadow: 0 0 25px rgba(30, 45, 38, 0.3);
 }
 
-.text-glow-phthalo {
-  text-shadow: 0 0 16px rgba(25, 53, 12, 0.15);
+.text-glow-sage {
+  text-shadow: 0 0 16px rgba(118, 147, 130, 0.2);
 }
 
-/* Grid overlay background for light theme */
+/* Grid overlay background */
 .bg-grid-pattern {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(64, 103, 104, 0.12) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(64, 103, 104, 0.12) 1px, transparent 1px);
+    linear-gradient(to right, rgba(118, 147, 130, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(118, 147, 130, 0.15) 1px, transparent 1px);
 }
 
 /* Custom Scrollbar */
@@ -97,12 +94,12 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #D5D3CC;
+  background: #F3EFE3;
 }
 ::-webkit-scrollbar-thumb {
-  background: #406768;
+  background: #769382;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #19350C;
+  background: #1E2D26;
 }
