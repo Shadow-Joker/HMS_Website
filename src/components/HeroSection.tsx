@@ -1,146 +1,63 @@
 import React from 'react';
-import { ArrowRight, Sparkles, Activity, ShieldCheck, Zap, Stethoscope, Bed, CheckCircle2, Layers } from 'lucide-react';
 
 export function HeroSection() {
   return (
-    <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden bg-grid-pattern bg-[#F3EFE3]">
-      {/* Ambient Glows */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#769382]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-[#C0C3B9]/30 rounded-full blur-3xl pointer-events-none" />
+    <section className="relative pt-40 pb-36 md:pt-52 md:pb-48 overflow-hidden text-center min-h-[92vh] flex flex-col justify-between bg-cover bg-center bg-no-repeat bg-[#FFFFFF]" style={{ backgroundImage: "url('/hero-sky-bg.jpg')" }}>
+      
+      {/* Soft Gradient Overlay for Crystal Clear Text Contrast and Seamless Blend */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#4BA7C4]/20 via-white/50 via-80% to-[#FFFFFF] z-0 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Left Column: Modular HMS Value Prop */}
-          <div className="lg:col-span-7 space-y-6">
-            {/* Eyebrow Badge */}
-            <div className="inline-flex items-center space-x-2 bg-[#769382]/15 border border-[#769382]/40 px-3.5 py-1.5 rounded-full">
-              <Sparkles className="w-4 h-4 text-[#769382]" />
-              <span className="text-xs font-nebula text-[#1E2D26] font-bold tracking-widest uppercase">
-                MODULAR AI HOSPITAL MANAGEMENT SYSTEM (HMS)
-              </span>
-            </div>
+      {/* Hero Content */}
+      <div className="max-w-5xl mx-auto px-6 relative z-10 space-y-7">
+        
+        {/* Main Headline with Serif Italic Accent */}
+        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-extrabold text-[#19382B] tracking-tight leading-[1.08] drop-shadow-sm">
+          Discover Calm <span className="font-serif-italic text-[#2B7891] font-normal">in Every Click</span>
+        </h1>
 
-            {/* Main Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-nebula font-extrabold text-[#1E2D26] tracking-wider leading-[1.12]">
-              The Modular AI Engine for <br />
-              <span className="text-[#769382]">Modern Hospitals</span>
-            </h1>
+        {/* Subtitle with Increased Font Size */}
+        <p className="text-lg sm:text-2xl text-[#19382B]/95 max-w-2xl mx-auto font-medium leading-relaxed drop-shadow-xs">
+          Our modular clinical AI platform helps your hospital reconnect with seamless operational flow, balance bed capacity, and optimize surgical suites — no matter where you are.
+        </p>
 
-            {/* Subtitle emphasizing Modular HMS */}
-            <p className="text-base sm:text-lg text-[#1E2D26]/85 leading-relaxed max-w-xl font-normal">
-              Deploy standalone modules or a complete enterprise HMS. Mix, match, and scale 16 specialized hospital modules — from OPD Voice AI Scribe to BookMyShow Bed Allocation & ABDM Billing.
-            </p>
+        {/* Center Capsule Pill CTA Button */}
+        <div className="pt-4 flex justify-center">
+          <a
+            href="#modules"
+            className="inline-flex items-center space-x-2 bg-[#2F6A43] hover:bg-[#19382B] text-white font-semibold text-base px-10 py-4 rounded-full transition-all shadow-xl pill-btn-shadow cursor-pointer active:scale-98"
+          >
+            <span>Start Your Journey</span>
+          </a>
+        </div>
 
-            {/* Modular Highlights Pills */}
-            <div className="flex flex-wrap gap-2 text-xs font-mono">
-              <span className="px-3 py-1 rounded-lg bg-white/90 border border-[#769382]/30 text-[#1E2D26] font-semibold flex items-center space-x-1.5 shadow-sm">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#769382]" />
-                <span>Pick & Choose Modules</span>
-              </span>
-              <span className="px-3 py-1 rounded-lg bg-white/90 border border-[#769382]/30 text-[#1E2D26] font-semibold flex items-center space-x-1.5 shadow-sm">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#769382]" />
-                <span>Zero Software Lock-in</span>
-              </span>
-              <span className="px-3 py-1 rounded-lg bg-white/90 border border-[#769382]/30 text-[#1E2D26] font-semibold flex items-center space-x-1.5 shadow-sm">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#769382]" />
-                <span>48-Hr Plug & Play Sync</span>
-              </span>
-            </div>
+      </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 pt-2">
-              <a
-                href="#modular-builder"
-                className="inline-flex items-center justify-center space-x-2.5 bg-[#1E2D26] hover:bg-[#1E2D26]/90 text-[#F3EFE3] font-nebula font-bold text-xs px-6 py-3.5 rounded-xl transition-all shadow-lg glow-sage-dark active:scale-98 cursor-pointer tracking-wider"
-              >
-                <span>Build Custom HMS Package</span>
-                <ArrowRight className="w-4 h-4 text-[#769382]" />
-              </a>
-
-              <a
-                href="#products"
-                className="inline-flex items-center justify-center space-x-2 bg-white/90 hover:bg-white text-[#1E2D26] font-nebula font-bold text-xs px-6 py-3.5 rounded-xl border border-[#769382]/40 transition-all cursor-pointer shadow-sm tracking-wider"
-              >
-                <Layers className="w-4 h-4 text-[#769382]" />
-                <span>Explore 16 Modules</span>
-              </a>
-            </div>
-
-            {/* Live Metrics Footer Bar */}
-            <div className="pt-6 border-t border-[#769382]/30 grid grid-cols-3 gap-4 font-mono">
-              <div>
-                <span className="text-xs text-[#1E2D26]/70 block font-semibold">Modular Options</span>
-                <span className="text-base sm:text-lg font-nebula font-bold text-[#769382]">16 Micro-HMS</span>
-              </div>
-              <div>
-                <span className="text-xs text-[#1E2D26]/70 block font-semibold">OT & Bed Capacity</span>
-                <span className="text-base sm:text-lg font-nebula font-bold text-[#1E2D26]">+38% Gain</span>
-              </div>
-              <div>
-                <span className="text-xs text-[#1E2D26]/70 block font-semibold">Interoperability</span>
-                <span className="text-base sm:text-lg font-nebula font-bold text-[#1E2D26]">FHIR & ABDM</span>
-              </div>
-            </div>
+      {/* Bottom Translucent Partner Logo Strip */}
+      <div className="relative z-10 pt-16 max-w-6xl mx-auto px-6">
+        <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14 text-sm font-mono text-[#19382B]/90 font-semibold bg-white/80 backdrop-blur-md p-4.5 rounded-full border border-white shadow-sm">
+          <div className="flex items-center space-x-2 font-bold tracking-wider">
+            <span className="w-3 h-3 rounded-full bg-[#4BA7C4]" />
+            <span>EPIC SYSTEMS</span>
           </div>
-
-          {/* Right Column: Interactive AI Hospital Command Center Preview Card */}
-          <div className="lg:col-span-5">
-            <div className="glass-card p-6 sm:p-8 rounded-3xl border border-[#769382]/40 shadow-2xl bg-white/95 space-y-6">
-              
-              <div className="flex items-center justify-between pb-4 border-b border-[#769382]/20 font-nebula text-[11px]">
-                <div className="flex items-center space-x-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#769382] animate-pulse" />
-                  <span className="text-[#1E2D26] font-bold tracking-wider">MODULAR HMS CONTROL PANEL</span>
-                </div>
-                <span className="text-[#769382] font-bold font-mono">PLUG & PLAY</span>
-              </div>
-
-              {/* Module 1: Voice Scribe */}
-              <div className="p-4 rounded-2xl bg-[#F3EFE3] border border-[#769382]/30 space-y-2">
-                <div className="flex justify-between items-center text-xs font-nebula font-bold text-[#1E2D26]">
-                  <div className="flex items-center space-x-2">
-                    <Stethoscope className="w-4 h-4 text-[#769382]" />
-                    <span>Multilingual Voice AI Scribe</span>
-                  </div>
-                  <span className="text-[10px] text-[#769382] font-mono">Module 03</span>
-                </div>
-                <div className="text-xs text-[#1E2D26]/80 font-mono bg-white p-2.5 rounded-xl border border-[#769382]/20">
-                  <span className="text-[#769382] font-bold">[DICTATION]:</span> "Patient presents acute hypertension, prescribed Amlodipine 5mg..."
-                </div>
-              </div>
-
-              {/* Module 2: Ward Bed Map */}
-              <div className="p-4 rounded-2xl bg-[#F3EFE3] border border-[#769382]/30 space-y-2">
-                <div className="flex justify-between items-center text-xs font-nebula font-bold text-[#1E2D26]">
-                  <div className="flex items-center space-x-2">
-                    <Bed className="w-4 h-4 text-[#769382]" />
-                    <span>Spatial Bed Allocation (BookMyShow)</span>
-                  </div>
-                  <span className="text-[10px] text-[#1E2D26] font-mono">Module 10</span>
-                </div>
-                <div className="w-full bg-[#769382]/20 h-2 rounded-full overflow-hidden">
-                  <div className="bg-[#1E2D26] h-full rounded-full w-[94%]" />
-                </div>
-              </div>
-
-              {/* Quick Status Tags */}
-              <div className="grid grid-cols-2 gap-3 text-xs font-mono">
-                <div className="p-3 rounded-xl bg-white border border-[#769382]/30 flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#769382]" />
-                  <span>ABDM QR Token</span>
-                </div>
-                <div className="p-3 rounded-xl bg-white border border-[#769382]/30 flex items-center space-x-2">
-                  <ShieldCheck className="w-4 h-4 text-[#769382]" />
-                  <span>HIPAA Encrypted</span>
-                </div>
-              </div>
-
-            </div>
+          <div className="flex items-center space-x-2 font-bold tracking-wider">
+            <span className="w-3 h-3 rounded-full bg-[#2F6A43]" />
+            <span>CERNER</span>
           </div>
-
+          <div className="flex items-center space-x-2 font-bold tracking-wider">
+            <span className="w-3 h-3 rounded-full bg-[#4BA7C4]" />
+            <span>ABDM NATIVE</span>
+          </div>
+          <div className="flex items-center space-x-2 font-bold tracking-wider">
+            <span className="w-3 h-3 rounded-full bg-[#2F6A43]" />
+            <span>OPENMRS</span>
+          </div>
+          <div className="flex items-center space-x-2 font-bold tracking-wider">
+            <span className="w-3 h-3 rounded-full bg-[#4BA7C4]" />
+            <span>MEDMANTRA</span>
+          </div>
         </div>
       </div>
+
     </section>
   );
 }

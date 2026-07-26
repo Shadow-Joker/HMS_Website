@@ -2,17 +2,22 @@
 
 @layer base {
   :root {
-    --canvas-bg: #F3EFE3;
-    --sage-green: #769382;
-    --sage-dark: #1E2D26;
-    --warm-cream: #EBE3D3;
-    --sage-gray: #C0C3B9;
+    --canvas-bg: #FFFFFF;
+    --text-primary: #19382B;
+    --text-secondary: #3D6453;
+    --sky-blue: #4BA7C4;
+    --sky-blue-light: #EBF7FA;
+    --foliage-green: #4B8E5F;
+    --foliage-green-dark: #2F6A43;
+    --cloud-white: #FFFFFF;
+    --border-subtle: rgba(25, 56, 43, 0.12);
   }
 
   body {
-    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: var(--canvas-bg);
-    color: var(--sage-dark);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
   }
 
   code, pre, .font-mono {
@@ -20,86 +25,67 @@
   }
 }
 
-/* Custom Futuristic Nebula Display Font Class */
+/* Nebula Futuristic Brand Font */
 .font-nebula {
-  font-family: 'Orbitron', 'Chakra Petch', sans-serif;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-family: 'Orbitron', 'Outfit', -apple-system, sans-serif;
+  letter-spacing: 0.08em;
+}
+
+.font-serif-italic {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
 }
 
 .font-display {
-  font-family: 'Orbitron', 'Outfit', sans-serif;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -0.02em;
 }
 
-/* New Healthcare Color Palette Utilities */
-.bg-canvas { background-color: #F3EFE3; }
-.bg-sage { background-color: #769382; }
-.bg-sage-dark { background-color: #1E2D26; }
-.bg-warm-cream { background-color: #EBE3D3; }
-.bg-sage-gray { background-color: #C0C3B9; }
+/* Sky & Cloud Palette Utilities */
+.bg-canvas { background-color: #FFFFFF; }
+.bg-sky-blue { background-color: #4BA7C4; }
+.bg-foliage { background-color: #4B8E5F; }
+.bg-foliage-dark { background-color: #2F6A43; }
 
-.text-canvas { color: #F3EFE3; }
-.text-sage { color: #769382; }
-.text-sage-dark { color: #1E2D26; }
-.text-warm-cream { color: #EBE3D3; }
-.text-sage-gray { color: #C0C3B9; }
+.text-sky-blue { color: #4BA7C4; }
+.text-foliage { color: #4B8E5F; }
+.text-foliage-dark { color: #2F6A43; }
+.text-slate-dark { color: #19382B; }
 
-.border-sage { border-color: #769382; }
-.border-sage-dark { border-color: #1E2D26; }
-.border-warm-cream { border-color: #EBE3D3; }
-.border-sage-gray { border-color: #C0C3B9; }
-
-/* Custom Light Theme Glassmorphism Cards */
-.glass-card {
+/* Floating Glass Pill Styling */
+.glass-pill {
   background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(118, 147, 130, 0.3);
-  box-shadow: 0 4px 20px rgba(30, 45, 38, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 30px -10px rgba(25, 56, 43, 0.12);
 }
 
-.glass-card-hover {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+.pill-btn-shadow {
+  box-shadow: 0 12px 28px -6px rgba(47, 106, 67, 0.35);
 }
 
-.glass-card-hover:hover {
-  border-color: rgba(118, 147, 130, 0.6);
-  box-shadow: 0 12px 32px -8px rgba(30, 45, 38, 0.12);
-  transform: translateY(-2px);
-}
-
-/* Glow Effects */
-.glow-sage {
-  box-shadow: 0 0 25px rgba(118, 147, 130, 0.35);
-}
-
-.glow-sage-dark {
-  box-shadow: 0 0 25px rgba(30, 45, 38, 0.3);
-}
-
-.text-glow-sage {
-  text-shadow: 0 0 16px rgba(118, 147, 130, 0.2);
-}
-
-/* Grid overlay background */
-.bg-grid-pattern {
-  background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(118, 147, 130, 0.15) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(118, 147, 130, 0.15) 1px, transparent 1px);
-}
-
-/* Custom Scrollbar */
+/* Hide Scrollbar Globally across WebKit, Firefox, IE/Edge */
 ::-webkit-scrollbar {
-  width: 8px;
+  display: none !important;
+  width: 0px !important;
+  height: 0px !important;
+  background: transparent !important;
 }
-::-webkit-scrollbar-track {
-  background: #F3EFE3;
+
+html, body, div, section, nav, main {
+  -ms-overflow-style: none !important;  /* IE & Edge */
+  scrollbar-width: none !important;  /* Firefox */
 }
-::-webkit-scrollbar-thumb {
-  background: #769382;
-  border-radius: 4px;
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none !important;
+  width: 0px !important;
+  height: 0px !important;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #1E2D26;
+
+.scrollbar-none {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
 }
