@@ -13,8 +13,8 @@ export function Navbar() {
         
         {/* Left Brand Logo */}
         <a href="#" className="flex items-center space-x-3 group">
-          <div className="w-9 h-9 rounded-full bg-[#19382B] flex items-center justify-center text-[#E8F4F6] shadow-sm group-hover:scale-105 transition-transform">
-            <NeevLogo className="w-5 h-5 text-white" />
+          <div className="w-9 h-9 rounded-full bg-white border border-[#4BA7C4]/30 flex items-center justify-center p-1 shadow-sm group-hover:scale-105 transition-transform overflow-hidden">
+            <NeevLogo className="w-full h-full object-contain" />
           </div>
           <span className="font-nebula font-bold text-sm tracking-wider text-[#19382B] uppercase">
             NEEV AI

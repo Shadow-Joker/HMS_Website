@@ -7,8 +7,8 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
         
         <div className="flex items-center space-x-3">
-          <div className="w-6 h-6 rounded-full bg-[#4BA7C4] flex items-center justify-center text-white">
-            <NeevLogo className="w-4 h-4 text-white" />
+          <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center p-0.5 shadow-sm overflow-hidden">
+            <NeevLogo className="w-full h-full object-contain" />
           </div>
           <span className="font-nebula font-bold text-xs tracking-wider text-white uppercase">
             NEEV AI
