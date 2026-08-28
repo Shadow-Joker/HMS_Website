@@ -25,7 +25,7 @@ export function TrustWall() {
           </h2>
 
           <p className="text-base sm:text-lg text-[#19382B]/85 leading-relaxed font-normal">
-            Tantriks AI connects seamlessly with legacy hospital infrastructure (Epic, Cerner, MEDITECH, MedMantra, OpenMRS) through open FHIR R4 and HL7 APIs.
+            Neev AI connects seamlessly with legacy hospital infrastructure (Epic, Cerner, MEDITECH, MedMantra, OpenMRS) through open FHIR R4 and HL7 APIs.
           </p>
         </div>
 

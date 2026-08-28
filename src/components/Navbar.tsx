@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Menu, X, Cloud } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import { NeevLogo } from './NeevLogo';
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -10,13 +11,13 @@ export function Navbar() {
       {/* Floating Centered Glass Pill Navbar */}
       <nav className="w-full max-w-4xl glass-pill rounded-full px-6 py-3 flex items-center justify-between transition-all duration-300">
         
-        {/* Left Cloud / Brand Logo */}
+        {/* Left Brand Logo */}
         <a href="#" className="flex items-center space-x-3 group">
-          <div className="w-9 h-9 rounded-full bg-[#4BA7C4] flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform">
-            <Cloud className="w-5 h-5 text-white" />
+          <div className="w-9 h-9 rounded-full bg-[#19382B] flex items-center justify-center text-[#E8F4F6] shadow-sm group-hover:scale-105 transition-transform">
+            <NeevLogo className="w-5 h-5 text-white" />
           </div>
           <span className="font-nebula font-bold text-sm tracking-wider text-[#19382B] uppercase">
-            TANTRIKS AI
+            NEEV AI
           </span>
         </a>
 

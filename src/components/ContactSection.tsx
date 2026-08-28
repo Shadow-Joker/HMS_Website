@@ -28,7 +28,7 @@ export function ContactSection() {
           </span>
           
           <h2 className="text-4xl sm:text-5xl font-display font-semibold text-[#19382B] tracking-tight">
-            Deploy Tantriks AI <br />
+            Deploy Neev AI <br />
             <span className="font-serif-italic text-[#2B7891] font-normal">in Your Hospital Network</span>
           </h2>
 
