@@ -11,12 +11,10 @@ export function Navbar() {
       {/* Floating Centered Glass Pill Navbar */}
       <nav className="w-full max-w-4xl glass-pill rounded-full px-6 py-3 flex items-center justify-between transition-all duration-300">
         
-        {/* Left Brand Logo */}
-        <a href="#" className="flex items-center space-x-3 group">
-          <div className="w-9 h-9 rounded-full bg-white border border-[#4BA7C4]/30 flex items-center justify-center p-1 shadow-sm group-hover:scale-105 transition-transform overflow-hidden">
-            <NeevLogo className="w-full h-full object-contain" />
-          </div>
-          <span className="font-nebula font-bold text-sm tracking-wider text-[#19382B] uppercase">
+        {/* Left Brand Logo Lockup: [ICON] NEEV AI */}
+        <a href="#" className="flex items-center space-x-2.5 group shrink-0">
+          <NeevLogo className="h-[22px] sm:h-[25px] md:h-[28px] w-auto transition-transform duration-200 group-hover:scale-105" />
+          <span className="font-nebula font-bold text-sm sm:text-[15px] tracking-wider text-[#19382B] uppercase select-none leading-none">
             NEEV AI
           </span>
         </a>

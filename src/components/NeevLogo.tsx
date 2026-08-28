@@ -3,22 +3,24 @@ import React from 'react';
 interface NeevLogoProps {
   className?: string;
   size?: number | string;
-  variant?: 'original' | 'transparent';
+  alt?: string;
+  colorVariant?: 'dark' | 'white';
 }
 
 export function NeevLogo({ 
-  className = "w-7 h-7", 
+  className = "h-7 w-auto", 
   size,
-  variant = 'original'
+  alt = "Neev AI",
+  colorVariant = 'dark'
 }: NeevLogoProps) {
-  const src = variant === 'transparent' ? '/neev-logo-transparent.png' : '/neev-logo.png';
+  const src = colorVariant === 'white' ? '/neev-logo-icon-white.png' : '/neev-logo-icon.png';
 
   return (
     <img
       src={src}
-      alt="Neev AI"
-      className={`object-contain select-none ${className}`}
-      style={size ? { width: size, height: size } : undefined}
+      alt={alt}
+      className={`object-contain select-none inline-block ${className}`}
+      style={size ? { height: size, width: 'auto' } : undefined}
       loading="eager"
     />
   );

@@ -6,10 +6,8 @@ export function Footer() {
     <footer className="bg-[#19382B] border-t border-[#4BA7C4]/30 py-5 text-xs font-mono text-[#E8F4F6]">
       <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-3">
         
-        <div className="flex items-center space-x-3">
-          <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center p-0.5 shadow-sm overflow-hidden">
-            <NeevLogo className="w-full h-full object-contain" />
-          </div>
+        <div className="flex items-center space-x-2.5">
+          <NeevLogo colorVariant="white" className="h-5 w-auto" />
           <span className="font-nebula font-bold text-xs tracking-wider text-white uppercase">
             NEEV AI
           </span>
